@@ -160,27 +160,52 @@ int main() {
     TreeNode* root = NULL;
     
     // Inserting nodes into the BST
-    root = insertNode(root, 50);
-    insertNode(root, 30);
-    insertNode(root, 20);
-    insertNode(root, 40);
-    insertNode(root, 70);
-    insertNode(root, 60);
-    insertNode(root, 80);
-    insertNode(root, 100);
+       int n, value;
     
-    printf("Inorder Traversal: ");
-    inorderTraversal(root);
-    printf("\n");
+    printf("Enter the number of nodes to insert: ");
+    scanf("%d", &n);
     
-    printf("Postorder Traversal: ");
-    postorderTraversal(root);
-    printf("\n");
-    
-    printf("Height of the tree: %d\n", height(root));
-    
-    printf("Total number of nodes: %d\n", countNodes(root));
-    
+    for (int i = 0; i < n; i++) {
+        printf("Enter value for node %d: ", i + 1);
+        scanf("%d", &value);
+        root = insertNode(root, value);
+    }
+
+    int choice;
+
+    while (1) {
+        printf("\nMenu:\n");
+        printf("1. Inorder Traversal\n");
+        printf("2. Postorder Traversal\n");
+        printf("3. Height of the Tree\n");
+        printf("4. Total Number of Nodes\n");
+        printf("5. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Inorder Traversal: ");
+                inorderTraversal(root);
+                printf("\n");
+                break;
+            case 2:
+                printf("Postorder Traversal: ");
+                postorderTraversal(root);
+                printf("\n");
+                break;
+            case 3:
+                printf("Height of the tree: %d\n", height(root));
+                break;
+            case 4:
+                printf("Total number of nodes: %d\n", countNodes(root));
+                break;
+            case 5: exit(0);
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+    }
+
     // Freeing memory allocated for the tree
     freeTree(root);
     
